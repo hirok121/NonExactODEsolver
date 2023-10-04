@@ -59,11 +59,11 @@
       <button class="cross" title="Close" type="button" onclick="backtostart();solveAnother();f2();f1();">X</button>
 
       <p>
-      <form class="solveform" id="solveforms"  method="get">
+      <form class="solveform" id="solveforms"  method="post">
 
-         <label id="lbl" for="dx">Enter seperable O.D.E function :</label>
+         <label id="lbl" for="eqnField">Enter seperable O.D.E function :</label>
          <br><br>
-         <input type="text" id="dx" name="dx" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0">
+         <input type="text" id="eqnField" name="eqnField" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0">
          <br>
          <button class="buttonDeafult" id="cnd" onclick="handleButtonClick(event)">With Initial Condition</button>
 
@@ -77,7 +77,7 @@
          </div>
 
          <button class="buttonDeafult" type="button" id="resetForm" onclick="solveAnother()">Clear Equation</button>
-         <button class="buttonDeafult" id="solve" type="submit" onclick="showEnterXY()">Solve</button>
+         <button class="buttonDeafult" value="submit" id="solve" type="submit">Solve</button>
 
       </form>
 

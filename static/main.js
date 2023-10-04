@@ -58,11 +58,8 @@ function f2() {
 function solveAnother() {
   document.getElementById("solveforms").reset();
 
-  document.getElementById("button3id").style.display = "none";
   document.getElementById("xyFormid").style.display = "none";
 
-  var button2id2 = document.getElementById("button2id");
-  var newMarginLeft3 = "-10px";
 }
 
 function toggleDivs() {

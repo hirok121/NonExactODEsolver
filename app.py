@@ -1,37 +1,30 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,redirect,url_for,session
 from First_order_ODEsolver import NonExactODEsolver
 app = Flask(__name__)
-
+app.secret_key="secret_key"
 @app.route('/', methods=['GET', 'POST'])
 def index():
     result=''
     if request.method == 'POST':
-        pass
-        # input1 = request.form.get('ode-input')
-        # checkbox = request.form.get('checkbox')
-        # if checkbox == 'on':
-        #     input2 = request.form.get('input2')
-        #     input3 = request.form.get('input3')
-        #     result = NonExactODEsolver.masterSolver(input1, input2, input3)
-        # else:
-        #     result = NonExactODEsolver.masterSolver(input1)
-        # return render_template('index.html', processed_text=result)
-    return render_template('index.html', processed_text='')
-
-@app.route('/form/', methods=['GET', 'POST'])
-def form():
-    result=''
-    if request.method == 'POST':
-        input1 = request.form.get('ode-input')
-        checkbox = request.form.get('checkbox')
-        if checkbox == 'on':
-            input2 = request.form.get('input2')
-            input3 = request.form.get('input3')
-            result = NonExactODEsolver.masterSolver(input1, input2, input3)
+        eqn = request.form.get('eqnField')
+        session["eqn"]=eqn
+        x = request.form.get('x')
+        y = request.form.get('y')
+        if x and y:
+            result = NonExactODEsolver.masterSolver(eqn, int(x), int(y))
+            return redirect("/solution/")
+            return render_template('index.html', processed_text=result)
         else:
-            result = NonExactODEsolver.masterSolver(input1)
-        return render_template('index.html', processed_text=result)
-    return render_template('form.html', processed_text='')
+            result = NonExactODEsolver.masterSolver(eqn)
+            return redirect(url_for("solution"))
+    return render_template('index.html')
+
+@app.route('/solution', methods=['GET', 'POST'])
+def solution():
+    # eqn = request.args.get('eqn')
+    # age = request.args.get('age')
+    eqn=session.get("eqn")
+    return render_template('solution.html',eqn=eqn)
 
 if __name__ == '__main__':
     app.run(debug=True)

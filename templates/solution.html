@@ -47,17 +47,20 @@
   </style> 
 </head>
 <body>
+   {% if eqn %}
+   <p> {{eqn}}</p>
+   {%endif%}
    
    <!--  -->
-
+   
    <form style="text-align: center;" >
-
+      
       <label id="inputEQ" for="eq">Entered Equation :</label><br>
       <input type="text" id="eq" name="eq" placeholder="Entered Equation"><br><br>
       <label id="solEQ" for="eq2">Solution :</label><br>
       <input type="text" id="eq2" name="eq2" placeholder="Solution :">
    </form>
-
+   
    <br>
    <button style="margin-left: 44.4%;" id="solveAnother" type="submit" onclick=" ">Solve Another</button>
 
