@@ -54,6 +54,7 @@
       </div>
 
    </div>
+  
 
    <div class="solutionDiv" id="solutionDiv">
       <button class="cross" title="Close" type="button" onclick="backtostart();solveAnother();f2();f1();">X</button>
@@ -63,7 +64,7 @@
 
          <label id="lbl" for="eqnField">Enter seperable O.D.E function :</label>
          <br><br>
-         <input type="text" id="eqnField" name="eqnField" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0">
+         <input type="text" id="eqnField" name="eqnField" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0" required autofocus>
          <br>
          <button class="buttonDeafult" id="cnd" onclick="handleButtonClick(event)">With Initial Condition</button>
 
@@ -99,6 +100,19 @@
          </div>
       </p>
    </div>
+
+   <script>
+      // Get the function name from the query parameter
+      var functionName = '{{ toggleDivs }}';
+      // console.log("funcname   "+functionName)
+      // console.log("window[functionName]   "+ typeof window[functionName])
+      
+      // Call the function if it exists
+      if (functionName && typeof window[functionName] === 'function') {
+         // console.log("toggleDivs in if statement")
+         window[functionName]();
+      }
+  </script>
 
 </body>
 
