@@ -1,0 +1,28 @@
+body {
+  margin-top: 16%;
+  background-color: lightslategrey;
+}
+
+#eq,
+#eq2 {
+  margin-top: 7px;
+  width: 290px;
+  height: 40px;
+  font-size: 17px;
+}
+
+#inputEQ,
+#solEQ {
+  font-size: 24px;
+}
+
+#solveAnother {
+  font-size: 14px;
+  background-color: #d9c8f0;
+  padding: 10px;
+  margin: 18px;
+  /* border: 2px solid black; */
+  border-radius: 7px;
+  font-family: Verdana;
+  font-style: bold;
+}

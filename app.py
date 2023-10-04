@@ -37,9 +37,12 @@ def solution():
     eqn=session.get("eqn")
     sol=session.get("sol")
     if request.method == 'POST':
+        
         global solveAnother
         solveAnother=True
+        
         return redirect('/')
+    
     return render_template('solution.html',eqn=eqn,solution=sol)
 
 if __name__ == '__main__':

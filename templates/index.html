@@ -72,9 +72,9 @@
          <br>
          <div id="xy">
             <label class="xLabel" for="x">X :</label>
-            <input type="number" id="x" name="x" placeholder="x :">
+            <input type="number" id="x" name="x" placeholder="x">
             <label class="yLabel" for="y">Y :</label>
-            <input type="number" id="y" name="y" placeholder="y :">
+            <input type="number" id="y" name="y" placeholder="y">
          </div>
 
          <button class="buttonDeafult" type="button" id="resetForm" onclick="solveAnother()">Clear Equation</button>
@@ -101,15 +101,13 @@
       </p>
    </div>
 
+
+   <!-- for solve Another ..it prevent waiting div to show up -->
    <script>
       // Get the function name from the query parameter
       var functionName = '{{ toggleDivs }}';
-      // console.log("funcname   "+functionName)
-      // console.log("window[functionName]   "+ typeof window[functionName])
-      
       // Call the function if it exists
       if (functionName && typeof window[functionName] === 'function') {
-         // console.log("toggleDivs in if statement")
          window[functionName]();
       }
   </script>
