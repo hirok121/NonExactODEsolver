@@ -6,15 +6,16 @@ app = Flask(__name__)
 def index():
     result=''
     if request.method == 'POST':
-        input1 = request.form.get('ode-input')
-        checkbox = request.form.get('checkbox')
-        if checkbox == 'on':
-            input2 = request.form.get('input2')
-            input3 = request.form.get('input3')
-            result = NonExactODEsolver.masterSolver(input1, input2, input3)
-        else:
-            result = NonExactODEsolver.masterSolver(input1)
-        return render_template('index.html', processed_text=result)
+        pass
+        # input1 = request.form.get('ode-input')
+        # checkbox = request.form.get('checkbox')
+        # if checkbox == 'on':
+        #     input2 = request.form.get('input2')
+        #     input3 = request.form.get('input3')
+        #     result = NonExactODEsolver.masterSolver(input1, input2, input3)
+        # else:
+        #     result = NonExactODEsolver.masterSolver(input1)
+        # return render_template('index.html', processed_text=result)
     return render_template('index.html', processed_text='')
 
 @app.route('/form/', methods=['GET', 'POST'])

@@ -1,20 +1,27 @@
 var y = 3;
 var x = 5;
 
+
+
 function showEnterXY() {
-  x = 6;
+  // x = 6;
 
   var button2id = document.getElementById("button2id");
   var resetFormit = document.getElementById("resetForm");
 
-  document.getElementById("button3id").style.display = "none";
-
-  var button3id2 = document.getElementById("button3id");
-
   var newMarginLeft = "-140px";
   var newMarginLeft2 = "240px";
   var newMarginLeft4 = "179px";
+
 }
+
+
+
+
+
+
+
+
 
 // ----------------------------------------------------------
 
@@ -59,12 +66,12 @@ function solveAnother() {
 }
 
 function toggleDivs() {
-  var div3 = document.getElementById("div3");
-  var div2 = document.getElementById("div2");
+  var waitingdiv = document.getElementById("waitingdiv");
+  var solutionDiv = document.getElementById("solutionDiv");
 
-  if (div3.style.display !== "none") {
-    div3.style.display = "none";
-    div2.style.display = "block";
+  if (waitingdiv.style.display !== "none") {
+    waitingdiv.style.display = "none";
+    solutionDiv.style.display = "block";
   }
 }
 
@@ -80,12 +87,12 @@ function xyFormShow() {
 }
 
 function backtostart() {
-  var div3 = document.getElementById("div3");
-  var div2 = document.getElementById("div2");
+  var waitingdiv = document.getElementById("waitingdiv");
+  var solutionDiv = document.getElementById("solutionDiv");
 
-  if (div2.style.display !== "none") {
-    div3.style.display = "block";
-    div2.style.display = "none";
+  if (solutionDiv.style.display !== "none") {
+    waitingdiv.style.display = "block";
+    solutionDiv.style.display = "none";
   }
 }
 
@@ -105,26 +112,4 @@ function checkXAndToggle(button) {
     button.disabled = false;
     button.style.cursor = "pointer";
   }
-}
-
-// /////////////////////////////////////////////////////
-
-function showModal(event) {
-  event.preventDefault(); // Prevent the default form submission
-
-  // Show the modal
-  var modal = document.getElementById('myModal');
-  modal.style.display = 'block';
-
-  // Set the iframe source to "/action.php" when the modal is shown
-  var iframe = document.getElementById('modalIframe');
-  iframe.src = 'a.html';
-}
-
-function closeModal() {
-  // Close modal when close button is clicked and clear the iframe source
-  var modal = document.getElementById('myModal');
-  modal.style.display = 'none';
-  var iframe = document.getElementById('modalIframe');
-  iframe.src = '';
 }

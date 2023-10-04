@@ -9,7 +9,7 @@ input:placeholder-shown {
     font-style: italic;
 }
 
-.div1 {
+.welcomediv {
     width: 50%;
     background-color: black;
     color: bisque;
@@ -29,7 +29,7 @@ p {
     padding: 50px;
 }
 
-.div2 {
+.solutionDiv {
     width: 50%;
     background-color: rgba(0, 0, 0, 0.8);
     color: bisque;
@@ -38,13 +38,10 @@ p {
     float: left;
     font-size: 20px;
     max-height: 100vh;
-}
-
-.hidden {
     display: none;
 }
 
-.div3 {
+.waitingdiv {
     width: 50%;
     background-color: rgba(0, 0, 0, 0.8);
     color: bisque;
@@ -185,6 +182,7 @@ p {
     float: left;
     margin-left: 20px;
     margin-top: 16px;
+    display: block;
 }
 
 /* dots////////////////////////////////////////////////// */
