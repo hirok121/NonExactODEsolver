@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mooli", sans-serif;
+}
+
+input:placeholder-shown {
+    font-style: italic;
+}
+
+.div1 {
+    width: 50%;
+    background-color: black;
+    color: bisque;
+    min-height: 100vh;
+    text-align: center;
+    float: left;
+    max-height: 100vh;
+}
+.h11 {
+    font-size: 35px;
+}
+
+.h22 {
+    font-size: 27px;
+}
+p {
+    padding: 50px;
+}
+
+.div2 {
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: bisque;
+    min-height: 100vh;
+    text-align: center;
+    float: left;
+    font-size: 20px;
+    max-height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+.div3 {
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: bisque;
+    min-height: 100vh;
+    text-align: left;
+    float: left;
+    font-size: 25px;
+}
+
+.div3p1 {
+    margin-top: 53px;
+}
+
+.div3p2 {
+    margin-top: 10px;
+}
+
+.solveform {
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+.cross {
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(217, 200, 240);
+    padding: 2px;
+    border: 2px solid white;
+    border-radius: 4px;
+    font-family: Verdana;
+    width: 38px;
+    height: 38px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.cross:hover {
+    background-color: rgba(216, 52, 52, 0.9);
+    color: bisque;
+}
+
+/* form //////////////////////////////////////////////*/
+
+#dx {
+    margin-top: 2px;
+    width: 380px;
+    height: 45px;
+    font-size: 20px;
+}
+
+#x,
+#y {
+    margin-top: 20px;
+    width: 80px;
+    height: 34px;
+    font-size: 18px;
+}
+
+.xLabel,
+.yLabel {
+    font-size: 20px;
+}
+.xLabel {
+    margin-left: -10px;
+}
+
+#xyFormdiv {
+    display: none;
+}
+
+/* button ///////////////////////////////////*/
+
+.buttonDeafult {
+    font-size: 14px;
+    background-color: #d9c8f0;
+    padding: 13px;
+    margin: 20px 20px 20px 20px;
+    /* border: 2px solid black; */
+    border-radius: 9px;
+    font-family: Verdana;
+    font-style: bold;
+}
+.buttonDeafult:hover {
+    background-color: #b68deb;
+}
+
+#solve {
+    width: 100px;
+}
+
+/* nav bar /////////////////////////////////////////*/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    float: left;
+    margin-left: 20px;
+    margin-top: 16px;
+}
+
+/* dots////////////////////////////////////////////////// */
+
+.dot {
+    display: inline-block;
+    width: 12.5px;
+    height: 12.5px;
+    border-radius: 50%;
+    background-color: #4b9cdb;
+}
+
+/* #4b9cdb */
+
+@keyframes jumpingAnimation {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, 15px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.container {
+    margin-left: 55px;
+    margin-top: -30px;
+}
+
+.container .dot:nth-last-child(1) {
+    animation: jumpingAnimation 0.6s 0.1s ease-in infinite;
+}
+
+.container .dot:nth-last-child(2) {
+    animation: jumpingAnimation 0.6s 0.2s ease-in infinite;
+}
+
+.container .dot:nth-last-child(3) {
+    animation: jumpingAnimation 0.6s 0.3s ease-in infinite;
+}
+
+.hidden2 {
+    display: none;
+}
+
+#div4 {
+    float: right;
+    margin-top: -20px;
+    padding-right: 120px;
+}
+
+#xy {
+    visibility: hidden;
+    align-items: center;
+    margin-top: -18px;
+}
+
+#start {
+    margin-top: -250px;
+}
+
+#solveforms {
+    margin-top: 13%;
+}
+
+#lbl {
+    font-size: 125%;
+}
+
+/* //////////////////////////////////////////////// */
+
+#myModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 25%; /* Adjust as needed */
+  top: 10%;
+  width: 50%;
+  height: 80%;
+  overflow: auto;
+  background-color: lightslategray;
+}
+
+#modalContent {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  position: relative;
+}
+
+/* Close button style */
+#closeButton {
+  position: absolute;
+  top: 0;
+  right:0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#modalIframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe border */
+}
