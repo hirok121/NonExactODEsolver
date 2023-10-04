@@ -116,4 +116,8 @@
 <div class="div3" id="div3"><p class="div3p1">Our program is awaiting your confirmation</p><p class="div3p2">Click the button to proceed<br><!-- <span style="font-size:50px;">...</span> --><div class="container">
 <div class="dot"></div>
 <div class="dot"></div>
-<div class="dot"></div></div></p></div></body></html>
+<div class="dot"></div></div></p></div>
+{% if processed_text %}
+        <h3 class="header">Solution : {{ processed_text }}</h3>
+    {% endif %}
+</body></html>
