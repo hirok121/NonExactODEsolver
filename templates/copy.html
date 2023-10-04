@@ -1,108 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Non Exact separable ODE</title>
     <link rel="icon" type="image/x-icon" href="../static/icon.png">
     <!--  -->
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link
-      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap"
-      rel="stylesheet">
-   <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap"
+        rel="stylesheet">
+    <!--  -->
 
     <style>
         body {
             font-family: "Mooli", sans-serif;
-    /* font-family: "Roboto", Arial, sans-serif; */
-    background-color: #f0f0f0;
+            /* font-family: "Roboto", Arial, sans-serif; */
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Mooli", sans-serif;
-}
+        }
 
-.header {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #0078d4;
-    color: white;
-    width: 100%;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Mooli", sans-serif;
+        }
 
-.header h1 {
-    font-size: 36px;
-}
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            /* background-color: #0078d4; */
+            color: rgb(0, 0, 0);
+            width: 100%;
+        }
 
-.solution-container {
-    text-align: center;
-    padding: 20px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .header h1 {
+            font-size: 36px;
+        }
 
-.boxed-content {
-    max-width: 600px;
-    width: 100%; /* Make sure the content takes the full width within the container */
-    vertical-align: top;
-}
+        .solution-container {
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.boxed-content h3 {
-    font-size: 24px;
-    margin: 10px 0;
-}
+        .boxed-content {
+            max-width: 600px;
+            width: 100%;
+            /* Make sure the content takes the full width within the container */
+            vertical-align: top;
+        }
 
-.boxed-content p {
-    font-size: 18px;
-    margin: 10px 0;
-    border: 2px solid #0078d4;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: white;
-}
+        .boxed-content h3 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
 
-.return-link {
-    text-align: center;
-    margin-top: 30px;
-}
+        .boxed-content p {
+            font-size: 18px;
+            margin: 10px 0;
+            border: 2px solid #0078d4;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: white;
+        }
 
-.return-link h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+        .return-link {
+            text-align: center;
+            margin-top: 30px;
+        }
 
-.solveAnother {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: #0078d4;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+        .return-link h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-.solveAnother:hover {
-    background-color: #005ea2;
-}
+        .solveAnother {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #0078d4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-.back-button {
+        .solveAnother:hover {
+            background-color: #005ea2;
+        }
+
+        .back-button {
             position: absolute;
             top: 70px;
-	    left: 30px;
+            left: 30px;
         }
     </style>
 </head>
-<body> 
+
+<body>
 
     <div class="header">
         <h1>NonExact separable ODE</h1>
@@ -111,19 +115,20 @@
         <div class="boxed-content">
             <h3>Entered Equation</h3>
             <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
-                {% if eqn %} {{eqn}} {%endif%}
+                    {% if eqn %} {{eqn}} {%endif%}
                 </math></p>
         </div>
         <div class="boxed-content">
             <h3>Solution</h3>
             <p> <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
-                 {% if solution %}{{solution}}{%endif%}</math></p>
+                    {% if solution %}{{solution}}{%endif%}</math></p>
         </div>
     </div>
     <form style="text-align: center" method="post">
         <button class="solveAnother" id="solveAnother" type="submit">
-           Solve Another
+            Solve Another
         </button>
-     </form>
+    </form>
 </body>
+
 </html>
