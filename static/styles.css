@@ -121,6 +121,8 @@ p {
     border-radius: 9px;
     font-family: Verdana;
     font-style: bold;
+    transition: background-color 0.3s ease;
+
 }
 .buttonDeafult:hover {
     background-color: #b68deb;
