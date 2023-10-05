@@ -1,28 +1,65 @@
 body {
-  margin-top: 16%;
-  background-color: lightslategrey;
+  font-family: "Mooli", sans-serif;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: azure;
+  margin: 0;
+  padding: 0;
 }
 
-#eq,
-#eq2 {
-  margin-top: 7px;
-  width: 290px;
-  height: 40px;
-  font-size: 17px;
+.header {
+  text-align: center;
+  padding: 50px 0;
+  width: 100%;
 }
 
-#inputEQ,
-#solEQ {
+.header h1 {
+  font-size: 36px;
+}
+
+.solution-container {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boxed-content {
+  max-width: 600px;
+  width: 100%;
+  /* Make sure the content takes the full width within the container */
+  vertical-align: top;
+}
+
+.boxed-content h3 {
   font-size: 24px;
+  margin: 10px 0;
 }
 
-#solveAnother {
-  font-size: 14px;
-  background-color: #d9c8f0;
+.boxed-content p {
+  font-size: 18px;
+  margin: 10px 0;
+  border: 2px solid #0078d4;
+  border-radius: 10px;
   padding: 10px;
-  margin: 18px;
-  /* border: 2px solid black; */
-  border-radius: 7px;
+  margin: 10px 0;
+  background-color: dodgerblue;
+}
+
+.solveAnother {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #d9c8f0;
+  /* color: white; */
+  text-decoration: none;
+  border-radius: 5px;
   font-family: Verdana;
   font-style: bold;
+  transition: background-color 0.3s ease;
+}
+
+.solveAnother:hover {
+  background-color: #b68deb;
 }
