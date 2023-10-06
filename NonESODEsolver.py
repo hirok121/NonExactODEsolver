@@ -1,4 +1,5 @@
 import sympy as sp
+from sympy.functions.elementary.trigonometric import TrigonometricFunction
 import pandas as pd
 import math
 
@@ -6,11 +7,12 @@ import math
 class NonExactODEsolver():
     nonSeparable=False
     logRemoved=False
+    # validity=False
     @staticmethod
     def masterSolver(eqn:str,x='',y=''):
         try:
             solution=''
-            
+            eqn=NonExactODEsolver.replaceSubStr(eqn)
             if not NonExactODEsolver.__check_validity(eqn):
                 return "Equation is not valid"
 
@@ -34,7 +36,7 @@ class NonExactODEsolver():
                     if isinstance(c,int):
                         solution=f"{NonExactODEsolver.__formateAnswer(fy_without_log-fx_without_log*c)} = 0"
                     else:
-                        return "Cannot get particular solution with the initial condition"
+                        return "Can't get particular solution with the initial condition"
                 else:
                     c=NonExactODEsolver.initial_condition(fy-fx,x,y)
                     solution=f"{NonExactODEsolver.__formateAnswer(fy)} - {NonExactODEsolver.__formateAnswer(fx-c)} = 0"
@@ -46,8 +48,8 @@ class NonExactODEsolver():
             else:
                 return "Cannot parse x,y into int."
             return solution
-        except:
-            return "Something very bad happened!!! i.g"
+        except :
+            return "EQn may not be in right from..Plz Check user manual..!"
         
 
     @staticmethod
@@ -56,47 +58,70 @@ class NonExactODEsolver():
 
         M,N=NonExactODEsolver.__separateVariable(M,N)
         # print("MMM ",M,"NNN ",N)
-        if M and N:
-            fx=sp.integrate(M,x)
-            fy=sp.integrate(N,y)
-            
-            ###################
-            # remove lcm
-            fx_terms = sp.Add.make_args(fx)  # Extract terms from the fx
-            fy_terms = sp.Add.make_args(fy) 
-            numbers=[]
-            for term in fx_terms+fy_terms:
-                fraction=sp.fraction(term)
-                numbers.append(fraction[1])
-            # print(numbers)
-            try:    
-                LCM=math.lcm(*numbers)
-                fx*=LCM
-                fy*=LCM
-                # print(LCM)
-            except :
-                pass
-
-            return fx,fy 
-        else:
-            False,False
+        fx=sp.integrate(M,x)
+        fy=sp.integrate(N,y)
         
-    
+        ###################
+        # remove lcm
+        fx_terms = sp.Add.make_args(fx)  # Extract terms from the fx
+        fy_terms = sp.Add.make_args(fy) 
+        numbers=[]
+        for term in fx_terms+fy_terms:
+            fraction=sp.fraction(term)
+            numbers.append(fraction[1])
+        # print(numbers)
+        try:    
+            LCM=math.lcm(*numbers)
+            fx*=LCM
+            fy*=LCM
+            # print(LCM)
+        except :
+            pass
+
+        return fx,fy 
+        
     @staticmethod
-    def reduceToStandard(eqn: str):
-        # Symbolify
-        x, y,e,c,s, X, Y = sp.symbols('x y e c s X Y')
+    def replaceSubStr(eqn):
         '''
         This function f(x)g(y)dx + f'(x)g'(y)dy=0 to f(x)/f'(x)dx=-g'(y)/g(y)dy
+        for trigonometry function:
+            sine -> s
+            cos -> c
+            tan -> t
+            cosec->S
+            sec->C
+            cot->T
         '''
         eqn = eqn.lower()
         eqn = eqn.replace("dx", "X")
         eqn = eqn.replace("dy", "Y")
-        # eqn = eqn.replace("sin", "s")
-        # eqn = eqn.replace("cos", "c")
+        # for trigonometry function:
+        eqn = eqn.replace("sin", "s").replace("cos", "c").replace("tan", "t").replace("cosec", "S").replace("sec", "C").replace("cot", "T")
+        # eqn = eqn.replace("s", "s").replace("cos", "c").replace("tan", "t").replace("cosec", "S").replace("sec", "C").replace("cot", "T")
         
+        return eqn
+    
+    @staticmethod
+    def reduceToStandard(eqn: str):
+        # Symbolify
+        x, y,e,c,s,t,S,C,T, X, Y = sp.symbols('x y e c s t S C T X Y')
+        '''
+        This function f(x)g(y)dx + f'(x)g'(y)dy=0 to f(x)/f'(x)dx=-g'(y)/g(y)dy
+        for trigonometry function:
+            sine -> s
+            cos -> c
+            tan -> t
+            cosec->S
+            sec->C
+            cot->T
+            we got replaced substr eqn
+        '''
+
 
         eqn = NonExactODEsolver.__add_stars(NonExactODEsolver, eqn)
+        # reverse SubStr eqn 
+        eqn = eqn.replace("s","sin").replace("c","cos").replace("t","tan").replace('S',"cosec").replace("C","sec" ).replace("T","cot")
+
 
         # Making Right Hand Side 0
         Lhs = eqn[0:eqn.find("=")]
@@ -108,10 +133,7 @@ class NonExactODEsolver():
         # print(Eqn)
         ###### handle exp function
         Eqn=Eqn.subs('e',sp.E)
-        # ####### handle sin/cos function
-        # Eqn=Eqn.subs('s',sp.sin)
-        # Eqn=Eqn.subs('c',sp.cos)
-        # ########
+        
         
         constant_value = Eqn.subs({X: 0, Y: 0})
         M =-1* sp.diff(Eqn, X) ### -1 for make it rhs
@@ -139,14 +161,26 @@ class NonExactODEsolver():
         # print(" Mf ",Mf," Nf " ,Nf)
 
         for factor in Mf:
+            # for trigonometricfunction
+            if factor.has(TrigonometricFunction):
+                arg1 = factor.args[0]
+                if "x" in str(arg1) and "y" in str(arg1):
+                    NonExactODEsolver.nonSeparable =True
+                    
             ##### here we replace exp to E so that our programme dose not treat (x in exp**y) as true  
             if 'y' in str(factor).replace('exp','E') and not NonExactODEsolver.nonSeparable:
-                NonExactODEsolver.nonSeparable ='y' in str(factor).replace('exp','E') and  'x' in str(factor).replace('exp','E')
+                NonExactODEsolver.nonSeparable = 'y' in str(factor).replace('exp','E') and  'x' in str(factor).replace('exp','E')
                 M = M/factor
                 N = N/factor
         for factor in Nf:
+            # for trigonometricfunction
+            if factor.has(TrigonometricFunction):
+                arg1 = factor.args[0]
+                if "x" in str(arg1) and "y" in str(arg1):
+                    NonExactODEsolver.nonSeparable =True
+                    
             if 'x' in str(factor).replace('exp','E') and not NonExactODEsolver.nonSeparable:
-                NonExactODEsolver.nonSeparable='y' in str(factor).replace('exp','E') and  'x' in str(factor).replace('exp','E')
+                NonExactODEsolver.nonSeparable = 'y' in str(factor).replace('exp','E') and  'x' in str(factor).replace('exp','E')
                 M = M/factor
                 N = N/factor
         # print(nonSeparabel)
@@ -177,7 +211,7 @@ class NonExactODEsolver():
 
     @staticmethod
     def __check_validity(eqn: str):
-        valid_char = "exyd0123456789+-*/^()= "  # space should be counted
+        valid_char = "sctSCTexyXY0123456789+-*/^()= "  # space should be counted
         return all(char in valid_char for char in eqn) and "=" in eqn and len(eqn[eqn.find("=") + 1:]) 
 
     @staticmethod
@@ -194,7 +228,7 @@ class NonExactODEsolver():
                 result.append('*')
             elif prev_char == '(' and char == ')':
                 result.append('*')
-            elif prev_char.isalnum() and char == '(':
+            elif prev_char.isalnum() and not (prev_char in "sctSCT") and char == '(':
                 result.append('*')
 
             result.append(char)
@@ -334,7 +368,7 @@ class NonExactODEsolver():
             return NonExactODEsolver.formateAnswer(ans)
         else:
             return "dM/dy != dN/dx \nNot Exact ODE \nUnable to Solve"
-
+##################### END class #################################################################################################### 
 
 def CSV_solve(file):
     df = pd.read_csv(file)
@@ -375,12 +409,12 @@ if __name__ == "__main__":
     # sol = [NonExactODEsolver.Solve(eqn) for eqn in equation]
     sol=""
     # eqn1=" ((x-4)/x^3)dx-((y^2-3)/y^4)dy=0"
-    eqn1="dy/(y+1)=dx/(x-1)"
+    eqn1="(cos(x)/sin(x))dx=-(e^y/(e^y+1))dy"
     # sol=NonExactODEsolver.Master(eqn1)
     # print(sol)
     # sol=NonExactODEsolver.Solve(eqn1)
     print(sol)
-    sol=NonExactODEsolver.masterSolver(eqn1,1,1)
+    sol=NonExactODEsolver.masterSolver(eqn1)
     print(sol)
 
     # CSV_solve("problems.csv")
