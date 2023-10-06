@@ -417,4 +417,4 @@ if __name__ == "__main__":
     sol=NonExactODEsolver.masterSolver(eqn1)
     print(sol)
 
-    # CSV_solve("problems.csv")
+    CSV_solve("problems.csv")
