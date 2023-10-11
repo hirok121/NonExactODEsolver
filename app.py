@@ -30,8 +30,6 @@ def index():
     else:
         return render_template('index.html')
 
-
-
 @app.route('/solution', methods=['GET', 'POST'])
 def solution():
     eqn=session.get("eqn")
@@ -44,6 +42,14 @@ def solution():
         return redirect('/')
     
     return render_template('solution.html',eqn=eqn,solution=sol)
+
+@app.route('/aboutOurTeam')
+def aboutOurTeam():
+    return render_template('aboutOurTeam.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
