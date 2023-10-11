@@ -1,0 +1,12 @@
+Equation, General Solution
+e^ydy=(x^2-2x)dx,3e^(y) = x^2(x - 3) + c
+dy/(y+1)=dx/(x-1),y + 1 = (x - 1)c
+ydy/(1+y^2)=dx/(x(1+x^2)),y^2 + 1 = (x^2/(x^2 + 1))c
+dy/(e^-y)=(e^x+x^2)dx,3e^(y) = x^3 + 3e^(x) + c
+((x-4)/x^3)dx=((y^2-3)/y^4)dy,(y^2 - 1)/y^3 = (x - 2)/x^2 + c
+ydy=-xe^-(x^2)dx,y^2/2 = e^(-x^2)/2 + c
+(1-y^2)dy=x^2dx,y(3 - y^2) = x^3 + c
+2(y-1)dy=(3x^2+4x+2)dx,y(y - 2) = x(x^2 + 2x + 2) + c
+((1-2y^2)/y)dy=cos(x)dx,-y^2 + log(y) = sin(x) + c
+dy/(1+y^2)=dx/(1+x^2),atan(y) = atan(x) + c
+(cos(x)/sin(x))dx=-(e^y/(e^y+1))dy,e^(y) + 1 = (1/sin(x))c
