@@ -14,4 +14,4 @@ Other functions briefly described:
 •	formateAnswer(solution): Formats the solution string for consistency.
 The program processes the equation and displays the solution in the console.
 Please make sure to structure your non-exact separable ODE according to the provided format for successful usage.
-Thx.
+Thx. again.
