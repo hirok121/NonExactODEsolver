@@ -1,8 +1,6 @@
 from flask import Flask, request, render_template,redirect,url_for,session
 from NonESODEsolver import NonExactODEsolver
 
-
-
 app = Flask(__name__)
 app.secret_key="secret_key"
 solveAnother=False
