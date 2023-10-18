@@ -13,4 +13,8 @@ Other functions briefly described:
 •	expTo_e(eqn): Converts "exp" to "e^" in the equation for better representation.
 •	formateAnswer(solution): Formats the solution string for consistency.
 The program processes the equation and displays the solution in the console.
+
 Please make sure to structure your non-exact separable ODE according to the provided format for successful usage.
+Thx.
+
+
