@@ -39,29 +39,30 @@
       <br>
       <div>
          <p>
-            <h1 class="h11">Welcome To Our Program</h1>
-            <br>
-            <br>
-            <h1 class="h22">Differential Equation Solver</h1>
+         <h1 class="h11">Welcome To Our Program</h1>
+         <br>
+         <br>
+         <h1 class="h22">Differential Equation Solver</h1>
          </p>
-            
+
          <p class="intro">
-         <button id="start" class="buttonDeafult" type="button" onclick="toggleDivs()">Click To Start</button>
+            <button id="start" class="buttonDeafult" type="button" onclick="toggleDivs()">Click To Start</button>
          </p>
       </div>
 
    </div>
-  
+
 
    <div class="solutionDiv" id="solutionDiv">
       <button class="cross" title="Close" type="button" onclick="backtostart();solveAnother();f2();f1();">X</button>
 
       <p>
-      <form class="solveform" id="solveforms"  method="post">
+      <form class="solveform" id="solveforms" method="post">
 
          <label id="lbl" for="eqnField">Enter seperable O.D.E function :</label>
          <br><br>
-         <input type="text" id="eqnField" name="eqnField" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0" required autofocus>
+         <input type="text" id="eqnField" name="eqnField" placeholder="E.g:  M(x,y)dx + N(x,y)dy = 0" required
+            autofocus>
          <br>
          <button class="buttonDeafult" id="cnd" onclick="handleButtonClick(event)">With Initial Condition</button>
 
@@ -87,14 +88,14 @@
    <!-- waiting div -->
    <div class="waitingdiv" id="waitingdiv">
       <p class="div3p1">Our program is awaiting your confirmation</p>
-      <p class="div3p2" >
+      <p class="div3p2">
          Click the button to proceed
          <br>
-         <div class="container">
+      <div class="container">
          <div class="dot"></div>
          <div class="dot"></div>
          <div class="dot"></div>
-         </div>
+      </div>
       </p>
    </div>
 
@@ -107,7 +108,7 @@
       if (functionName && typeof window[functionName] === 'function') {
          window[functionName]();
       }
-  </script>
+   </script>
 
 </body>
 

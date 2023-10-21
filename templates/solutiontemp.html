@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-   <meta charset="UTF-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Document</title>
+    <!--  -->
+    <link rel="stylesheet" href="../static/solution.css" />
+    <script src="../static/solution.js"></script>
+    <!--  -->
+  </head>
 
-   <!--  -->
-   <link rel="stylesheet" href="../static/solution.css">
-   <script src="../static/solution.js"></script>
-   <!--  -->
+  <body>
+    <a href="/">back</a>
+    {% if eqn %}
+    <p>{{eqn}}</p>
+    {%endif%} {% if solution %}
+    <p>{{solution}}</p>
+    {%endif%}
 
-</head>
+    <!--  -->
 
-<body>
-   <a href="/">back</a>
-   {% if eqn %}
-   <p>{{eqn}}</p>
-   {%endif%} {% if solution %}
-   <p>{{solution}}</p>
-   {%endif%}
-
-   <!--  -->
-
-   <form style="text-align: center" method="post">
+    <form style="text-align: center" method="post">
       <label id="inputEQ" for="eq">Entered Equation :</label><br />
-      <input type="text" id="eq" name="eq" placeholder="Entered Equation" /><br /><br />
+      <input
+        type="text"
+        id="eq"
+        name="eq"
+        placeholder="Entered Equation"
+      /><br /><br />
       <label id="solEQ" for="eq2">Solution :</label><br />
       <input type="text" id="eq2" name="eq2" placeholder="Solution :" />
 
       <br />
-      <button style="align-items: center;" id="solveAnother" type="submit" onclick=" ">
-         Solve Another
+      <button
+        style="align-items: center"
+        id="solveAnother"
+        type="submit"
+        onclick=" "
+      >
+        Solve Another
       </button>
-   </form>
+    </form>
 
-   <!--  -->
-</body>
-
+    <!--  -->
+  </body>
 </html>
