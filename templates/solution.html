@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Non Exact separable ODE</title>
-    <link rel="icon" type="image/x-icon" href="../static/icon.jpg">
+    <link rel="icon" type="image/x-icon" href="../static/icon.jpg" />
     <!--  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&family=Roboto:ital,wght@0,300;0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
     <!--  -->
-    <link rel="stylesheet" href="../static/solution.css">
-</head>
+    <link rel="stylesheet" href="../static/solution.css" />
+  </head>
 
-<body>
-
+  <body>
     <div class="header">
-        <h1>NonExact separable ODE</h1>
+      <h1>NonExact separable ODE</h1>
     </div>
     <div class="solution-container">
-        <div class="boxed-content">
-            <h3>Entered Equation</h3>
-            <p>
-                    {% if eqn %} {{eqn}} {%endif%}
-                </p>
-        </div>
-        <div class="boxed-content">
-            <h3>Solution</h3>
-            <p>
-                    {% if solution %}{{solution}}{%endif%}</p>
-        </div>
+      <div class="boxed-content">
+        <h3>Entered Equation</h3>
+        <p>{% if eqn %} {{eqn}} {%endif%}</p>
+      </div>
+      <div class="boxed-content">
+        <h3>Solution</h3>
+        <p>{% if solution %}{{solution}}{%endif%}</p>
+      </div>
     </div>
     <form style="text-align: center" method="post">
-        <button class="solveAnother" id="solveAnother" type="submit">
-            Solve Another
-        </button>
+      <button class="solveAnother" id="solveAnother" type="submit">
+        Solve Another
+      </button>
     </form>
-</body>
-
+  </body>
 </html>
